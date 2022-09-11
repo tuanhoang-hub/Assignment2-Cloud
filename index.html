@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Black">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap">
+    <link rel="stylesheet" href="ckstyle.css">
+    <title>About us</title>
+</head>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        font-family: "Roboto", sans-serif;
+    }
+
+    /*header*/
+    header {
+        width: 100%;
+        top: 0;
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        -webkit-box-shadow: 0px 9px 3px -2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 9px 3px -2px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        background-color: #fff;
+    }
+
+    header li,
+    a,
+    button {
+        font-family: "Archivo", sans-serif;
+        color: #000;
+        font-size: 1rem;
+        text-decoration: none;
+    }
+
+    .logo-name {
+        margin-left: 7vw;
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+        display: inline-block;
+        float: left;
+        margin-top: 12px;
+        cursor: pointer;
+    }
+
+    .logo-name span {
+        font-family: "Archivo", sans-serif;
+        font-size: 35px;
+        font-weight: bold;
+        display: inline-block;
+        padding: 25px 20px;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin-right: 12vw;
+    }
+
+    nav ul li {
+        line-height: 20px;
+        margin: 15px 10px;
+        display: inline-block;
+    }
+
+    nav ul li a {
+        position: relative;
+        transition: all 0.3s ease 0s;
+        padding: 5px 0px;
+        font-size: 20px;
+    }
+
+    nav ul li .underline:before,
+    #browse-text a:before {
+        position: absolute;
+        content: '';
+        left: 0;
+        bottom: 0;
+        height: 3px;
+        width: 100%;
+        background: #FAB325;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s linear;
+    }
+
+    nav ul li .underline:hover:before,
+    #browse-text a:hover:before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .browse {
+        position: relative;
+    }
+
+    #browse-text {
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+        font-size: 20px;
+    }
+
+    .browse-dropdown {
+        display: list-item;
+        position: absolute;
+        cursor: pointer;
+        left: 0;
+        padding: 0;
+        padding-top: 15px;
+        width: 180px;
+        display: none;
+    }
+
+    .browse-dropdown li {
+        perspective: 1000px;
+        display: inline-block;
+        background: #bfbfbf;
+        width: 180px;
+        box-sizing: border-box;
+        padding: 10px 25px;
+        float: left;
+        clear: left;
+        color: #fff;
+        font-size: 16px;
+        margin: 0;
+        border-radius: 3px;
+    }
+
+    .browse-dropdown li:hover {
+        background-color: #FAB325;
+    }
+
+    .browse-dropdown-info:first-child {
+        border-bottom: 2px solid #fff;
+    }
+
+    .browse-links {
+        font-size: 18px;
+    }
+
+    .browse:hover .browse-dropdown {
+        box-sizing: border-box;
+        letter-spacing: 0px;
+        display: block;
+    }
+
+    .browse:hover .browse-dropdown-info:first-child {
+        display: block;
+        animation: dropDownAnimation 300ms ease normal;
+        animation-delay: -200ms;
+    }
+
+    .browse:hover .browse-dropdown-info:last-child {
+        display: block;
+        animation: dropDownAnimation 300ms ease normal;
+        animation-delay: 0ms;
+    }
+
+    @keyframes dropDownAnimation {
+        0% {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+
+        50% {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }
+
+    label #open,
+    label #close {
+        color: #000;
+        font-size: 30px;
+        float: right;
+        line-height: 80px;
+        margin-right: 25px;
+        cursor: pointer;
+        display: none;
+    }
+
+    #active {
+        display: none;
+    }
+
+
+    /*footer*/
+    footer {
+        display: flexbox;
+        width: 100%;
+        height: 200px;
+        background-color: #262626;
+        -webkit-box-shadow: 0px -3px 4px 2px rgba(0, 0, 0, 0.15);
+        box-shadow: 0px -3px 4px 2px rgba(0, 0, 0, 0.15);
+        font-family: "Archivo", sans-serif;
+    }
+
+    #logoName {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        font-size: 25px;
+        font-weight: bold;
+        color: #fff;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #D0D3D9;
+    }
+
+    .policy,
+    .copyright {
+        padding: 0;
+        margin: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .policy li {
+        display: inline-block;
+        list-style: none;
+        padding-right: 20px;
+    }
+
+    .policy a {
+        color: #fff;
+    }
+
+    .copyright a {
+        text-align: center;
+        color: #bfbfbf;
+    }
+
+    /*Tablet*/
+    @media screen and (max-width: 1224px) {
+
+        /*responsive navbar*/
+        label #open {
+            display: block;
+        }
+
+        nav>ul {
+            position: fixed;
+            float: left;
+            height: 100vh;
+            width: 100%;
+            background: #262626;
+            top: 70px;
+            left: -100%;
+            transition: all 0.5s;
+            padding: 0;
+        }
+
+        nav>ul>li {
+            display: block;
+            width: 100%;
+            line-height: 50px;
+            padding: 0 15vw;
+        }
+
+        nav ul li a {
+            font-size: 30px;
+            margin-left: 10px;
+            color: #fff;
+        }
+
+        nav ul li:first-of-type {
+            margin-top: 50px;
+        }
+
+        nav ul li .underline:before,
+        #browse-text a:before {
+            background: #bfbfbf;
+        }
+
+        #active:checked~ul {
+            left: 0;
+        }
+
+        #active:checked~label #open {
+            display: none;
+        }
+
+        #active:checked~label #close {
+            display: block;
+        }
+
+        .browse-dropdown {
+            width: 100%;
+            position: relative;
+            padding-top: 0;
+        }
+
+        .browse-dropdown-info:first-child {
+            margin-top: 0;
+            border: none;
+        }
+
+        .browse-dropdown li {
+            width: 100%;
+            display: none;
+            background: none;
+        }
+
+        .browse-links {
+            font-size: 23px;
+        }
+
+        .browse-dropdown li:hover {
+            background-color: #bfbfbf;
+        }
+    }
+
+    @media screen and (max-width:400px) {
+
+        .logo-name span {
+            font-size: 25px;
+            font-weight: bold;
+            display: inline-block;
+            padding: 25px 20px;
+        }
+    }
+
+    #about {
+        color: #FAB325;
+    }
+
+    main {
+        margin-top: 140px;
+        margin-left: 13%;
+        margin-right: 13%;
+        display: block;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        font-family: "Archivo Bold", sans-serif;
+        margin-bottom: 30px;
+    }
+
+    .vline {
+        border-bottom: 5px solid #bfbfbf;
+        padding-bottom: 5px;
+    }
+
+    .ourteam {
+        margin-top: 140px;
+        width: 100%;
+        text-align: justify;
+        margin-bottom: 50px;
+    }
+
+    .ourmembers {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 90px;
+    }
+
+    .members {
+        margin-top: 20px;
+    }
+
+    .mem-photo {
+        display: block;
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .real-person {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .portraits {
+        position: relative;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .5s ease;
+    }
+
+    .portraits:hover .overlay {
+        opacity: 1;
+    }
+
+    .icons {
+        width: 50px;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .mem-info {
+        display: block;
+        background-color: #fefefe;
+        margin-top: 40vh;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+        border-radius: 20px;
+        width: 40%;
+        text-align: center;
+        line-height: 30px;
+        font-size: 18px;
+    }
+
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <header>
+        <!--Logo-->
+        <a href="index.html" class="logo-name">
+            <img class="logo" src="imgs/LOGO-01.png" alt="logo">
+            <span>Shopeeverse</span>
+        </a>
+        <nav>
+            <!--Responsive Navbar-->
+            <input type="checkbox" id="active">
+            <label for="active">
+                <i class="fa fa-bars" id="open"></i>
+                <i class="fa fa-times" id="close"></i>
+            </label>
+            <ul>
+                <li><a class="underline" href="index.html">Home</a></li>
+                <li><a class="underline" id="about" href="aboutus.html">About Us</a></li>
+                <li class="browse">
+                    <span id="browse-text"><a href="#">Browse</a></span>
+                    <ul class="browse-dropdown">
+                        <li class="browse-dropdown-info">
+                            <a class="browse-links" href="browse-store-name.html">Browse Stores by Name</a>
+                        </li>
+                        <li class="browse-dropdown-info">
+                            <a class="browse-links" href="browse-store-category.html">Browse Stores by Category</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="underline" href="contact.html">Contact</a></li>
+                <li><a class="underline" href="fees.html">Fees</a></li>
+                <li><a class="underline" href="faqs.html">FAQs</a></li>
+                <li><a class="underline" href="MyAccount.html">My Account</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="ourteam">
+            <h1><span class="vline">OUR TEAM</span></h1>
+            <p>
+                Shopeverse group which includes Thu, Tuan, Dung, and Ngan, was completed this web. Some of our team
+                members have known each other before and although Tuan is a new member, we work together easily. We did
+                a good job of sharing the work and having the content because we split each part equally among the
+                members so no one does too much or too little. About the content, many opinions are given so there is a
+                lot of controversies, but we all try to agree on the same opinion.
+            </p>
+        </div>
+
+        <h1><span class="vline">OUR MEMBERS</span></h1>
+
+        <div class="ourmembers">
+
+            <div class="members">
+                <div id="photo" onclick="modalWindowThu()" class="portraits">
+                    <img class="mem-photo" src="memoji1.png" />
+                    <div class="overlay">
+                        <img id="portrait" class="mem-photo" src="thu.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div id="thuModal" class="modal">
+                <div id="content" class="mem-info">
+                    <span class="close">×</span>
+                    <p>Hua Minh Thu <br />s3878667</p>
+                    <a href="mailto:s3878667@rmit.edu.vn"><img class="icons" src="outlook.png" /></a>
+                </div>
+            </div>
+
+
+
+            <div class="members">
+                <div class="portraits" onclick="modalWindowHoang()">
+                    <img class="mem-photo" src="memoji3.jpg" />
+                    <div class="overlay">
+                        <img class="mem-photo real-person" src="tuan.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div id="hoangModal" class="modal">
+                <div class="mem-info">
+                    <span class="close">×</span>
+                    <p>
+                        Hoang Ngoc Tuan <br>
+                        s3817872
+                    </p>
+                    <a href="mailto:s3817872@rmit.edu.vn"><img class="icons" src="outlook.png" /></a>
+                </div>
+            </div>
+
+
+
+            <div class="members">
+                <div class="portraits" onclick="modalWindowDung()">
+                    <img class="mem-photo" src="memoji4.jpg" />
+                    <div class="overlay">
+                        <img class="mem-photo real-person" src="dung.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div id="dungModal" class="modal">
+                <div class="mem-info">
+                    <span class="close">×</span>
+                    <p>
+                        Nguyen Hoang Dung <br>
+                        s3863900
+                    </p>
+                    <a href="mailto:s3863900@rmit.edu.vn"><img class="icons" src="outlook.png" /></a>
+                </div>
+            </div>
+
+
+
+            <div class="members">
+                <div class="portraits" onclick="modalWindowNgan()">
+                    <img class="mem-photo" src="memoji2.jpg" />
+                    <div class="overlay">
+                        <img class="mem-photo real-person" src="ngan.jpg" />
+                    </div>
+                </div>
+            </div>
+            <div id="nganModal" class="modal">
+                <div class="mem-info">
+                    <span class="close">×</span>
+                    <p>
+                        Phan Luu Thien Ngan <br>
+                        s3863893
+                    </p>
+                    <a href="mailto:s3863893@rmit.edu.vn"><img class="icons" src="outlook.png" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cookie-container">
+            <p>
+                We use cookies in this website to help you have the best experience with the website and the
+                advertisements.
+                For more information, you can read our <a href="#">privacy policy</a>
+                and <a href="#">cookie policy</a>.
+            </p>
+            <button class="cookie-btn">
+                Agree
+            </button>
+
+        </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <a id="logoName" href="index.html">
+            <img class="logo" src="LOGO-01.png" alt="logo">
+            <span>Shopeeverse</span>
+        </a>
+        <div class="policy">
+            <ul>
+                <li><a href="tos.html">Term of Service</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <a href="copyright.html">Copyright &copy; Mall 2021</a>
+        </div>
+    </footer>
+    <script>
+        function modalWindowThu() {
+            var modal = document.getElementById("thuModal");
+            modal.style.display = "block";
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            let span = document.getElementsByClassName("close")[0];
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        }
+
+
+        function modalWindowHoang() {
+            let modal = document.getElementById("hoangModal");
+            modal.style.display = "block";
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            let span = document.getElementsByClassName("close")[1];
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        }
+
+        function modalWindowDung() {
+            let modal = document.getElementById("dungModal");
+            modal.style.display = "block";
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            let span = document.getElementsByClassName("close")[2];
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        }
+
+        function modalWindowNgan() {
+            let modal = document.getElementById("nganModal");
+            modal.style.display = "block";
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            let span = document.getElementsByClassName("close")[3];
+            span.onclick = function () {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
